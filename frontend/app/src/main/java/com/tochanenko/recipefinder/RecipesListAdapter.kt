@@ -1,10 +1,10 @@
 package com.tochanenko.recipefinder
 
-import android.icu.number.NumberFormatter.with
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -15,8 +15,8 @@ class RecipesListAdapter (private val recipes: List<Recipe>) : RecyclerView.Adap
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val image = view.findViewById<ImageView>(R.id.recipes_list_item_img)
         val title = view.findViewById<TextView>(R.id.recipes_list_item_title)
-        val website_button = view.findViewById<Button>(R.id.recipes_list_item_website)
         val info_button = view.findViewById<Button>(R.id.recipes_list_item_info)
+        val favorite_button = view.findViewById<ImageButton>(R.id.recipes_list_item_favorite_button)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,13 +27,16 @@ class RecipesListAdapter (private val recipes: List<Recipe>) : RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        // Get the data model based on position
         val recipe: Recipe = recipes[position]
-        // Set item views based on your views and data model
         val image = holder.image
         val title = holder.title
-        val website_button = holder.website_button
         val info_button = holder.info_button
+        val favoriteButton = holder.favorite_button
+
+        favoriteButton.setImageResource(
+            if (recipe.favorite) R.drawable.ic_round_favorite_24
+            else R.drawable.ic_round_favorite_border_24
+        )
 
         Picasso.get().load(recipe.imageUrl).into(image)
         title.text = recipe.title

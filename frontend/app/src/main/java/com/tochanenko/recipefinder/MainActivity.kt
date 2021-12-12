@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.recyclerview.widget.DividerItemDecoration
-
-
+import org.json.JSONArray
+import org.json.JSONObject
 
 
 class MainActivity : AppCompatActivity() {
@@ -70,6 +70,8 @@ class MainActivity : AppCompatActivity() {
         }
     """.trimIndent()
 
+    val jsonObject = JSONObject(json)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -89,54 +91,21 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val recipesList = findViewById<View>(R.id.recipes_list) as RecyclerView
-        val recipes = arrayListOf(
-            Recipe(
-                1,
-                "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-                "Super fancy dish"
-            ),
-            Recipe(
-                1,
-                "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-                "Mega amount of dishes"
-            ),
-            Recipe(
-                1,
-                "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-                "Supa testiotto pazziatoo"
-            ),
-            Recipe(
-                1,
-                "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-                "Super fancy dish"
-            ),
-            Recipe(
-                1,
-                "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-                "Mega amount of dishes"
-            ),
-            Recipe(
-                1,
-                "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-                "Supa testiotto pazziatoo"
-            ),
-            Recipe(
-                1,
-                "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-                "Super fancy dish"
-            ),
-            Recipe(
-                1,
-                "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-                "Mega amount of dishes"
-            ),
-            Recipe(
-                1,
-                "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-                "Supa testiotto pazziatoo"
+        val recipesJsonList: JSONArray = jsonObject.getJSONArray("recipes")
+        val recipes = mutableListOf<Recipe>()
+
+        for (i: Int in 0 until recipesJsonList.length()) {
+            val recipeJsonObject = recipesJsonList.getJSONObject(i)
+            recipes.add(
+                Recipe(
+                    recipeJsonObject.getInt("id"),
+                    recipeJsonObject.getString("image"),
+                    recipeJsonObject.getString("title")
+                )
             )
-        )
+        }
+
+        val recipesList = findViewById<View>(R.id.recipes_list) as RecyclerView
 
         val adapter = RecipesListAdapter(recipes)
         recipesList.adapter = adapter

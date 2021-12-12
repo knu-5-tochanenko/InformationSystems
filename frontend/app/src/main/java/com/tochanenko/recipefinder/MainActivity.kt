@@ -27,7 +27,9 @@ class MainActivity : AppCompatActivity() {
         this.aboutFragment = AboutFragment()
         this.favoritesFragment = FavoritesFragment()
         this.bottomNavigation = findViewById(R.id.bottom_navigation)
-        setCurrentFragment(this.aboutFragment)
+        setCurrentFragment(this.searchFragment)
+
+        bottomNavigation.selectedItemId = R.id.bottom_navigation_search
 
         bottomNavigation.setOnNavigationItemSelectedListener { item ->
             when(item.itemId) {

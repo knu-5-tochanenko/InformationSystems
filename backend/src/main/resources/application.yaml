@@ -6,3 +6,7 @@ recipe:
       getSame: "https://api.spoonacular.com/recipes/%s/similar?apiKey=${recipe.api.key}&number=%d"
       getById: "https://api.spoonacular.com/recipes/%s/information?apiKey=${recipe.api.key}"
       getByIngredients: "https://api.spoonacular.com/recipes/findByIngredients?apiKey=${recipe.api.key}&ingredients=%s&number=%d"
+server:
+  error:
+    include-message: always
+    include-binding-errors: always

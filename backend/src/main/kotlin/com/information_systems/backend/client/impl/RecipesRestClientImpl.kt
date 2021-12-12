@@ -7,6 +7,8 @@ import com.information_systems.backend.dto.response.RecipeShortResponse
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
+import org.springframework.web.client.HttpClientErrorException
+import org.springframework.web.client.RestClientException
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.server.ResponseStatusException
 
@@ -22,6 +24,10 @@ class RecipesRestClientImpl : RecipesRestClient {
         try {
             return restTemplate.getForObject(recipesConfig.GET_ALL_URL.format(number, offset), RecipeShortResponse::class.java)
                     ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "Recipes are not found")
+        } catch (e: ResponseStatusException) {
+            throw e
+        } catch (e: HttpClientErrorException) {
+            throw ResponseStatusException(e.statusCode)
         } catch (e: Exception) {
             throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Error while processing recipe request")
         }
@@ -31,6 +37,10 @@ class RecipesRestClientImpl : RecipesRestClient {
         try {
             return restTemplate.getForObject(recipesConfig.GET_BY_ID_URL.format(id), RecipeFullResponse::class.java)
                     ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "Recipes are not found")
+        } catch (e: ResponseStatusException) {
+            throw e
+        } catch (e: HttpClientErrorException) {
+            throw ResponseStatusException(e.statusCode)
         } catch (e: Exception) {
             throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Error while processing recipe request")
         }
@@ -41,6 +51,10 @@ class RecipesRestClientImpl : RecipesRestClient {
             val recipeShortDto = restTemplate.getForObject(recipesConfig.GET_BY_INGREDIENTS_URL.format(ingredients.joinToString(), number), Array<RecipeShortDto>::class.java)
                     ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "Recipes are not found")
             return RecipeShortResponse(recipeShortDto.toList(), null)
+        } catch (e: ResponseStatusException) {
+            throw e
+        } catch (e: HttpClientErrorException) {
+            throw ResponseStatusException(e.statusCode)
         } catch (e: Exception) {
             throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Error while processing recipe request")
         }
@@ -51,6 +65,10 @@ class RecipesRestClientImpl : RecipesRestClient {
             val recipeShortDto = restTemplate.getForObject(recipesConfig.GET_SAME_URL.format(id, number), Array<RecipeShortDto>::class.java)
                     ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "Recipes are not found")
             return RecipeShortResponse(recipeShortDto.toList(), null)
+        } catch (e: ResponseStatusException) {
+            throw e
+        } catch (e: HttpClientErrorException) {
+            throw ResponseStatusException(e.statusCode)
         } catch (e: Exception) {
             throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Error while processing recipe request")
         }

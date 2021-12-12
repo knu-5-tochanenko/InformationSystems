@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
@@ -36,6 +35,7 @@ class RecipesListAdapter (private val recipes: List<Recipe>) : RecyclerView.Adap
             val intent = Intent(holder.itemView.context, RecipeDetailsActivity::class.java)
             intent.putExtra("id", recipe.id)
             intent.putExtra("title", recipe.title)
+            intent.putExtra("img", recipe.imageUrl)
             holder.itemView.context.startActivity(intent)
         }
 

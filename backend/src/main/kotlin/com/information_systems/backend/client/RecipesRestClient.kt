@@ -1,7 +1,11 @@
 package com.information_systems.backend.client
 
-import org.springframework.beans.factory.annotation.Value
+import com.information_systems.backend.dto.response.RecipeFullResponse
+import com.information_systems.backend.dto.response.RecipeShortResponse
 
 interface RecipesRestClient {
-
+    fun getAll(number: Int, offset: Int): RecipeShortResponse
+    fun getById(id: String): RecipeFullResponse
+    fun getByIngredients(ingredients: List<String>, number: Int): RecipeShortResponse
+    fun getSameById(id: String, number: Int): RecipeShortResponse
 }

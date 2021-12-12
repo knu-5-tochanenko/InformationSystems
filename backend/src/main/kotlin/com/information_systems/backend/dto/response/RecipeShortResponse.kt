@@ -5,5 +5,6 @@ import lombok.Data
 
 @Data
 data class RecipeShortResponse (
-    val results: List<RecipeShortDto>
+    val results: List<RecipeShortDto>,
+    val totalResults: Long?
 )

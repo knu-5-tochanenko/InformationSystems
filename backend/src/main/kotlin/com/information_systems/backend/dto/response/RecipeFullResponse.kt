@@ -12,6 +12,6 @@ data class RecipeFullResponse(
         val image: String,
         val summary: String,
         val instructions: String,
-        val shortUrl: String,
-        val extendedIngredients: IngredientsDto
+        val sourceUrl: String,
+        val extendedIngredients: List<IngredientsDto>
 )

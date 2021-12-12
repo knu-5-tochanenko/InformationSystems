@@ -1,4 +1,8 @@
 recipe:
   api:
     key: ${API_KEY}
-    url: "https://api.spoonacular.com/recipes"
+    url:
+      getAll: "https://api.spoonacular.com/recipes/complexSearch?apiKey=${recipe.api.key}&number=%d&offset=%d"
+      getSame: "https://api.spoonacular.com/recipes/%s/similar?apiKey=${recipe.api.key}&number=%d"
+      getById: "https://api.spoonacular.com/recipes/%s/information?apiKey=${recipe.api.key}"
+      getByIngredients: "https://api.spoonacular.com/recipes/findByIngredients?apiKey=${recipe.api.key}&ingredients=%s&number=%d"

@@ -1,12 +1,11 @@
 package com.tochanenko.recipefinder
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
@@ -32,6 +31,13 @@ class RecipesListAdapter (private val recipes: List<Recipe>) : RecyclerView.Adap
         val title = holder.title
         val info_button = holder.info_button
         val favoriteButton = holder.favorite_button
+
+        info_button.setOnClickListener {
+            val intent = Intent(holder.itemView.context, RecipeDetailsActivity::class.java)
+            intent.putExtra("id", recipe.id)
+            intent.putExtra("title", recipe.title)
+            holder.itemView.context.startActivity(intent)
+        }
 
         favoriteButton.setImageResource(
             if (recipe.favorite) R.drawable.ic_round_favorite_24

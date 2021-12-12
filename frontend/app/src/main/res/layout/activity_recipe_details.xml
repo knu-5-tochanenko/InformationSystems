@@ -21,7 +21,6 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Note: A RecyclerView can also be used -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -63,7 +62,8 @@
                 android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="@+id/recipe_details_title"
                 app:layout_constraintTop_toBottomOf="@+id/recipe_details_title"
-                app:srcCompat="@drawable/ic_round_access_time_24" />
+                app:srcCompat="@drawable/ic_round_access_time_24"
+                app:tint="@color/brown_800" />
 
             <TextView
                 android:id="@+id/recipe_details_time"
@@ -86,7 +86,8 @@
                 android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="@+id/recipe_details_time_icon"
                 app:layout_constraintTop_toBottomOf="@+id/recipe_details_time_icon"
-                app:srcCompat="@drawable/ic_round_room_service_24" />
+                app:srcCompat="@drawable/ic_round_room_service_24"
+                app:tint="@color/brown_800" />
 
             <TextView
                 android:id="@+id/recipe_details_servings"
@@ -165,7 +166,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:background="#00FFFFFF"
                 app:layout_constraintTop_toTopOf="@+id/recipe_details_title"
-                app:srcCompat="@drawable/ic_round_favorite_border_24" />
+                app:srcCompat="@drawable/ic_round_favorite_border_24"
+                app:tint="@color/brown_800" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

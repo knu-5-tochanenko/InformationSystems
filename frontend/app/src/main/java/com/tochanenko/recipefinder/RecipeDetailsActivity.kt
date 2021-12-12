@@ -1,7 +1,10 @@
 package com.tochanenko.recipefinder
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
+import android.text.Spanned
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -126,8 +129,8 @@ class RecipeDetailsActivity : AppCompatActivity() {
         timeTextView.text = "${recipe.readyInMinutes} minutes"
         servingsTextView.text = "${recipe.servings} servings"
         // TODO ADD LINK TO BUTTON
-        summaryTextView.text = recipe.summary
-        instructionTextView.text = recipe.instructions
+        summaryTextView.text = getHtmlText(recipe.summary)
+        instructionTextView.text = getHtmlText(recipe.instructions)
 
         recipeDetailsToolbar.title = recipe.title
 
@@ -178,4 +181,10 @@ class RecipeDetailsActivity : AppCompatActivity() {
             finish()
         }
     }
+
+    private fun getHtmlText(html: String): Spanned = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+        Html.fromHtml(html, Html.FROM_HTML_MODE_COMPACT)
+    else
+        Html.fromHtml(html)
+
 }

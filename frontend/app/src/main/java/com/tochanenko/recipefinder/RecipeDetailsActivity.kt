@@ -12,6 +12,9 @@ import android.widget.TextView
 import com.google.android.material.appbar.MaterialToolbar
 import com.squareup.picasso.Picasso
 import org.json.JSONObject
+import android.content.Intent
+import android.net.Uri
+
 
 class RecipeDetailsActivity : AppCompatActivity() {
     private val json = """
@@ -128,7 +131,6 @@ class RecipeDetailsActivity : AppCompatActivity() {
         titleTextView.text = recipe.title
         timeTextView.text = "${recipe.readyInMinutes} minutes"
         servingsTextView.text = "${recipe.servings} servings"
-        // TODO ADD LINK TO BUTTON
         summaryTextView.text = getHtmlText(recipe.summary)
         instructionTextView.text = getHtmlText(recipe.instructions)
         recipeDetailsToolbar.title = recipe.title
@@ -136,6 +138,11 @@ class RecipeDetailsActivity : AppCompatActivity() {
             if (FavoritesList.contains(recipe.id)) R.drawable.ic_round_favorite_24
             else R.drawable.ic_round_favorite_border_24
         )
+        resourceLinkButton.setOnClickListener {
+            val uri: Uri = Uri.parse(recipe.sourceUrl)
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            startActivity(intent)
+        }
 
         favoritesButton.setOnClickListener {
             if (FavoritesList.contains(recipe.id)) {

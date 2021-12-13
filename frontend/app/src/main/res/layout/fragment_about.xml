@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".AboutFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -24,7 +23,7 @@
                 android:id="@+id/fragment_about_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Recipes Finder"
+                android:text="@string/recipes_finder"
                 android:textAlignment="center"
                 android:textColor="@color/brown_800"
                 android:textSize="20sp" />
@@ -34,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Created by\nVladyslav Tochanenko \n and Taiisia Velychko"
+                android:text="@string/created_by_nvladyslav_tochanenko_n_taiisia_velychko"
                 android:textAlignment="center" />
         </LinearLayout>
 

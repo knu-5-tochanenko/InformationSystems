@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 
 class IngredientListAdapter (private val ingredients: List<IngredientDTO>) : RecyclerView.Adapter<IngredientListAdapter.ViewHolder>() {
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val nameTextView = view.findViewById<TextView>(R.id.ingredient_item_name)
-        val amountUnitTextView = view.findViewById<TextView>(R.id.ingredient_item_amount_unit)
-        val buttonUrl = view.findViewById<Button>(R.id.ingredient_item_url)
+        val nameTextView: TextView = view.findViewById(R.id.ingredient_item_name)
+        val amountUnitTextView: TextView = view.findViewById(R.id.ingredient_item_amount_unit)
+        val buttonUrl: Button = view.findViewById(R.id.ingredient_item_url)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

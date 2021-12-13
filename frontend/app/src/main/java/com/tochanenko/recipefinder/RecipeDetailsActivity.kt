@@ -19,23 +19,22 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
-import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 
 
 class RecipeDetailsActivity : AppCompatActivity() {
-    lateinit var imageView: ImageView
-    lateinit var titleTextView: TextView
-    lateinit var timeTextView: TextView
-    lateinit var servingsTextView: TextView
-    lateinit var resourceLinkButton: Button
-    lateinit var summaryTextView: TextView
-    lateinit var instructionTextView: TextView
-    lateinit var recipeDetailsToolbar: MaterialToolbar
-    lateinit var favoritesButton: ImageButton
+    private lateinit var imageView: ImageView
+    private lateinit var titleTextView: TextView
+    private lateinit var timeTextView: TextView
+    private lateinit var servingsTextView: TextView
+    private lateinit var resourceLinkButton: Button
+    private lateinit var summaryTextView: TextView
+    private lateinit var instructionTextView: TextView
+    private lateinit var recipeDetailsToolbar: MaterialToolbar
+    private lateinit var favoritesButton: ImageButton
 
-    var id: Int = 0
+    private var id: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

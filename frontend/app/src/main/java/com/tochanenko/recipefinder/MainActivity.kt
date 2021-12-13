@@ -9,11 +9,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var searchFragment: SearchFragment
-    lateinit var aboutFragment: AboutFragment
-    lateinit var favoritesFragment: FavoritesFragment
-    lateinit var bottomNavigation: BottomNavigationView
-    lateinit var currentFragment: String
+    private lateinit var searchFragment: SearchFragment
+    private lateinit var aboutFragment: AboutFragment
+    private lateinit var favoritesFragment: FavoritesFragment
+    private lateinit var bottomNavigation: BottomNavigationView
+    private lateinit var currentFragment: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

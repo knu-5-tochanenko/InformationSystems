@@ -11,10 +11,10 @@ import com.squareup.picasso.Picasso
 class RecipesListAdapter (private val recipes: List<Recipe>) : RecyclerView.Adapter<RecipesListAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val image = view.findViewById<ImageView>(R.id.recipes_list_item_img)
-        val title = view.findViewById<TextView>(R.id.recipes_list_item_title)
-        val info_button = view.findViewById<Button>(R.id.recipes_list_item_info)
-        val favorite_button = view.findViewById<ImageButton>(R.id.recipes_list_item_favorite_button)
+        val image: ImageView = view.findViewById(R.id.recipes_list_item_img)
+        val title: TextView = view.findViewById(R.id.recipes_list_item_title)
+        val info_button: Button = view.findViewById(R.id.recipes_list_item_info)
+        val favorite_button: ImageButton = view.findViewById(R.id.recipes_list_item_favorite_button)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

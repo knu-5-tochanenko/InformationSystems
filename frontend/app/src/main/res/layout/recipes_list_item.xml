@@ -23,7 +23,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="TextView"
+        android:text="@string/loading"
         android:textColor="@color/brown_800"
         app:layout_constraintBottom_toTopOf="@+id/recipes_list_item_info"
         app:layout_constraintEnd_toStartOf="@+id/recipes_list_item_favorite_button"

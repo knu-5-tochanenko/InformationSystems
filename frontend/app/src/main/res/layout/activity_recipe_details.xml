@@ -169,6 +169,38 @@
                 app:srcCompat="@drawable/ic_round_favorite_border_24"
                 app:tint="@color/brown_800" />
 
+            <TextView
+                android:id="@+id/recipe_details_ingredients"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Ingredients"
+                android:textColor="@color/brown_800"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/recipe_details_instructions"
+                app:layout_constraintStart_toStartOf="@+id/recipe_details_instructions"
+                app:layout_constraintTop_toBottomOf="@+id/recipe_details_instructions" />
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/recipe_details_instructions"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/recipe_details_instructions"
+                app:layout_constraintTop_toBottomOf="@+id/recipe_details_ingredients">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/ingredients_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </FrameLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 

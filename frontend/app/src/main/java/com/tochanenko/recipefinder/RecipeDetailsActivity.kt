@@ -14,6 +14,10 @@ import com.squareup.picasso.Picasso
 import org.json.JSONObject
 import android.content.Intent
 import android.net.Uri
+import android.view.View
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 
 class RecipeDetailsActivity : AppCompatActivity() {
@@ -154,6 +158,8 @@ class RecipeDetailsActivity : AppCompatActivity() {
             }
         }
 
+        populateIngredientsList(recipe)
+
     }
 
     private fun getRecipe(): RecipeDTO {
@@ -200,6 +206,20 @@ class RecipeDetailsActivity : AppCompatActivity() {
         recipeDetailsToolbar.setNavigationOnClickListener {
             finish()
         }
+    }
+
+    private fun populateIngredientsList(recipe: RecipeDTO) {
+        val ingredientsList = findViewById<View>(R.id.ingredients_list) as RecyclerView
+
+        val adapter = IngredientListAdapter(recipe.ingredients)
+        ingredientsList.adapter = adapter
+        ingredientsList.addItemDecoration(
+            DividerItemDecoration(
+                ingredientsList.context,
+                DividerItemDecoration.VERTICAL
+            )
+        )
+        ingredientsList.layoutManager = LinearLayoutManager(this)
     }
 
     private fun getHtmlText(html: String): Spanned = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)

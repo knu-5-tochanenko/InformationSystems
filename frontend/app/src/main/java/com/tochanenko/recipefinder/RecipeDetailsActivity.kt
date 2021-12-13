@@ -131,8 +131,21 @@ class RecipeDetailsActivity : AppCompatActivity() {
         // TODO ADD LINK TO BUTTON
         summaryTextView.text = getHtmlText(recipe.summary)
         instructionTextView.text = getHtmlText(recipe.instructions)
-
         recipeDetailsToolbar.title = recipe.title
+        favoritesButton.setImageResource(
+            if (FavoritesList.contains(recipe.id)) R.drawable.ic_round_favorite_24
+            else R.drawable.ic_round_favorite_border_24
+        )
+
+        favoritesButton.setOnClickListener {
+            if (FavoritesList.contains(recipe.id)) {
+                FavoritesList.delete(recipe.id)
+                favoritesButton.setImageResource(R.drawable.ic_round_favorite_border_24)
+            } else {
+                FavoritesList.add(recipe)
+                favoritesButton.setImageResource(R.drawable.ic_round_favorite_24)
+            }
+        }
 
     }
 

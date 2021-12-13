@@ -40,9 +40,19 @@ class RecipesListAdapter (private val recipes: List<Recipe>) : RecyclerView.Adap
         }
 
         favoriteButton.setImageResource(
-            if (recipe.favorite) R.drawable.ic_round_favorite_24
+            if (FavoritesList.contains(recipe.id)) R.drawable.ic_round_favorite_24
             else R.drawable.ic_round_favorite_border_24
         )
+
+        favoriteButton.setOnClickListener {
+            if (FavoritesList.contains(recipe.id)) {
+                FavoritesList.delete(recipe.id)
+                favoriteButton.setImageResource(R.drawable.ic_round_favorite_border_24)
+            } else {
+                FavoritesList.add(recipe)
+                favoriteButton.setImageResource(R.drawable.ic_round_favorite_24)
+            }
+        }
 
         Picasso.get().load(recipe.imageUrl).into(image)
         title.text = recipe.title

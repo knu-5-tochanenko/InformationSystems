@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Recipe Finder</string>
+    <string name="favorites">Favorites</string>
+    <string name="search">Search</string>
+    <string name="info">Info</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_recipe_details">RecipeDetailsActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="loading">Loading...</string>
+    <string name="instructions">Instructions</string>
+    <string name="recipe_image">Recipe image</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="recipe_details">Recipe Details</string>
+    <string name="summary">Summary</string>
+    <string name="recipes_finder">Recipes Finder</string>
+    <string name="created_by_nvladyslav_tochanenko_n_taiisia_velychko">Created by\nVladyslav Tochanenko \n Taiisia Velychko</string>
+    <string name="type_here_to_search">Type here to search...</string>
+    <string name="read_more">Read More</string>
+</resources>
